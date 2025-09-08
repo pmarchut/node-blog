@@ -1,0 +1,22 @@
+{
+  "name": "node-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pmarchut/node-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pmarchut/node-blog/issues"
+  },
+  "homepage": "https://github.com/pmarchut/node-blog#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
