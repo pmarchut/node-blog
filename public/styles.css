@@ -5,7 +5,6 @@ body {
     margin: 20px auto;
     padding: 0 20px;
     font-family: 'Noto Serif', serif;
-    max-width: 1200px;
 }
 
 p,
@@ -28,6 +27,13 @@ nav {
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
     text-transform: uppercase;
+    flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  nav {
+        flex-direction: row;
+    }
 }
 
 nav ul {
