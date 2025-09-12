@@ -16,6 +16,7 @@ app.set('view engine', 'ejs');
 
 // middleware & static files
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
 
 app.get('/', (req, res) => {
@@ -31,6 +32,41 @@ app.get('/blogs', (req, res) => {
     Blog.find().sort({ createdAt: -1 })
         .then(result => {
             res.render('index', { title: 'All Blogs', blogs: result });
+        })
+        .catch(err => { 
+            console.error(err); 
+        });
+});
+
+app.post('/blogs', (req, res) => {
+    const blog = new Blog(req.body);
+
+    blog.save()
+        .then(result => {
+            res.redirect('/blogs');
+        })
+        .catch(err => {
+            console.error(err);
+        });
+});
+
+app.get('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+    Blog.findById(id)
+        .then(result => {
+            res.render('details', { title: 'Blog Details', blog: result });
+        })
+        .catch(err => { 
+            console.error(err); 
+        });
+});
+
+app.delete('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+
+    Blog.findByIdAndDelete(id)
+        .then(result => {
+            res.json({ redirect: '/blogs' });
         })
         .catch(err => { 
             console.error(err); 
