@@ -7,8 +7,10 @@ const blogRoutes = require('./routes/blogRoutes');
 // express app
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
 mongoose.connect(process.env.MONGODB_URI)
-  .then(() => app.listen(3000))
+  .then(() => app.listen(PORT))
   .catch(err => console.error(err));
 
 // register view engine
